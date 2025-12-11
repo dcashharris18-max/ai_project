@@ -93,6 +93,15 @@ ai_project/
 
 ## Quick Start
 
+**CI**
+
+This repository includes a GitHub Actions workflow that runs linting and backend tests on push and pull requests. After you add a remote, the CI badge will display build status.
+
+CI badge (replace <user> and <repo> with your values):
+
+![CI](https://github.com/<user>/<repo>/actions/workflows/ci.yml/badge.svg)
+
+
 1. **Create virtual environment:**
    ```bash
    python -m venv ai.env
@@ -198,3 +207,20 @@ MIT License
 ## Support
 
 For issues or questions, check the documentation or submit an issue.
+
+## Developer Notes
+
+- To run linters/formatters locally:
+
+```bash
+pip install -r backend/requirements_dev.txt
+black .
+isort .
+flake8 .
+```
+
+ - To run backend tests locally:
+
+```bash
+python -m pytest backend/tests -q
+```
