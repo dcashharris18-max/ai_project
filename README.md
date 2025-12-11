@@ -2,6 +2,8 @@
 
 An advanced AI-powered system that integrates multiple business domains including cryptocurrency trading, international trade, marketplace management, social media, construction project management, and comprehensive marketing functions.
 
+**🌐 Now with Web API!** Host this system online and access it via REST API endpoints. See [DEPLOYMENT.md](DEPLOYMENT.md) for easy hosting instructions.
+
 ## Features
 
 ### 🤖 Core AI Model
@@ -82,7 +84,12 @@ cp .env.example .env
 
 ### Web Application (Hosted)
 
-Run the web application:
+Quick start with the provided script:
+```bash
+./start.sh
+```
+
+Or run the web application directly:
 ```bash
 python app.py
 ```
@@ -102,6 +109,8 @@ curl -X POST http://localhost:5000/crypto/analyze \
 # Run automated cycle
 curl -X POST http://localhost:5000/run-cycle
 ```
+
+**For deployment instructions**, see [DEPLOYMENT.md](DEPLOYMENT.md)
 
 ### Command Line Interface
 

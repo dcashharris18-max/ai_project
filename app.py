@@ -29,7 +29,8 @@ def get_system():
     global system
     if system is None:
         system = AITradingSystem()
-        # Train with sample data on startup
+        # Train with sample data on startup (using seed for consistency)
+        np.random.seed(42)
         sample_data = np.random.randn(100, 3)
         sample_labels = np.random.randn(100, 1)
         system.train_ai_model(sample_data, sample_labels)
