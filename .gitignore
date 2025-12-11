@@ -1,0 +1,54 @@
+# .gitignore
+
+# Backend
+backend/.env
+backend/storage/
+backend/app/__pycache__/
+backend/**/__pycache__/
+backend/*.pyc
+backend/.pytest_cache/
+backend/venv/
+
+# Frontend
+frontend/node_modules/
+frontend/build/
+frontend/.env.local
+frontend/.env.production.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Database
+*.db
+*.sqlite
+postgres_data/
+
+# Docker
+.dockerignore
+
+# Python
+.venv
+dist/
+build/
+*.egg-info/
+
+# Large model artifacts
+Models/
+Models/*
