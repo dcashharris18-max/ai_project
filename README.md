@@ -80,9 +80,32 @@ cp .env.example .env
 
 ## Usage
 
-### Basic Usage
+### Web Application (Hosted)
 
-Run the system:
+Run the web application:
+```bash
+python app.py
+```
+
+The web interface will be available at `http://localhost:5000`
+
+You can also use the REST API endpoints:
+```bash
+# Check system status
+curl http://localhost:5000/status
+
+# Analyze cryptocurrency market
+curl -X POST http://localhost:5000/crypto/analyze \
+     -H "Content-Type: application/json" \
+     -d '{"symbol":"BTC/USDT"}'
+
+# Run automated cycle
+curl -X POST http://localhost:5000/run-cycle
+```
+
+### Command Line Interface
+
+Run the system directly:
 ```bash
 python main.py
 ```
@@ -178,6 +201,53 @@ To use all features, you'll need API keys for:
 
 Add these to your `.env` file (see `.env.example` for template).
 
+## Deployment
+
+### Deploy to Render / Railway / Heroku
+
+This project includes deployment configuration files for easy hosting on cloud platforms:
+
+1. **Render.com** (Recommended - Free tier available)
+   - Connect your GitHub repository
+   - Render will automatically detect the `Procfile`
+   - Set environment variables in the Render dashboard
+   - Deploy!
+
+2. **Railway.app**
+   - Connect your GitHub repository
+   - Railway will automatically detect and deploy
+   - Configure environment variables if needed
+
+3. **Heroku**
+   ```bash
+   heroku create your-app-name
+   git push heroku main
+   heroku config:set LOG_LEVEL=INFO
+   ```
+
+### Deploy with Docker
+
+Build and run using Docker:
+```bash
+# Build the image
+docker build -t ai-trading-system .
+
+# Run the container
+docker run -p 5000:5000 ai-trading-system
+```
+
+Or use Docker Compose:
+```bash
+docker-compose up
+```
+
+### Environment Variables for Production
+
+Set these environment variables on your hosting platform:
+- `PORT` - Port number (automatically set by most platforms)
+- `LOG_LEVEL` - Logging level (INFO, DEBUG, etc.)
+- API keys from `.env.example` as needed
+
 ## Requirements
 
 - Python 3.8+
@@ -202,6 +272,47 @@ Marketplace metrics: {'total_listings': 5, 'active_listings': 5}
 AI Model Trained: True
 Active Modules: 6
 ```
+
+## API Endpoints
+
+When running the web application (`python app.py`), the following REST API endpoints are available:
+
+### General
+- `GET /` - Web interface with API documentation
+- `GET /health` - Health check endpoint
+- `GET /status` - Get overall system status
+
+### Cryptocurrency Trading
+- `POST /crypto/analyze` - Analyze market for a trading pair
+  ```json
+  {"symbol": "BTC/USDT"}
+  ```
+- `GET /crypto/portfolio` - Get portfolio status
+
+### International Trade
+- `POST /trade/analyze` - Analyze trade opportunity
+  ```json
+  {"product": "Electronics", "from_region": "Asia", "to_region": "North America"}
+  ```
+
+### Marketplace
+- `GET /marketplace/metrics` - Get performance metrics
+
+### Social Media
+- `GET /social/analytics` - Get analytics summary
+- `POST /social/trends` - Monitor trends for a platform
+  ```json
+  {"platform": "twitter"}
+  ```
+
+### Construction
+- `GET /construction/projects` - Get project summary
+
+### Marketing
+- `GET /marketing/summary` - Get campaigns summary
+
+### Automation
+- `POST /run-cycle` - Run automated cycle across all modules
 
 ## Contributing
 

@@ -31,3 +31,8 @@ redis>=4.6.0
 # Utilities
 python-dateutil>=2.8.2
 schedule>=1.2.0
+
+# Web framework for hosting
+flask>=2.3.0
+flask-cors>=4.0.0
+gunicorn>=21.2.0
