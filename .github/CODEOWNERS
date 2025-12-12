@@ -1,0 +1,5 @@
+# CODEOWNERS: require review from the project owner for changes
+* @dcashharris18-max
+
+# Workflow owners
+.github/workflows/ @dcashharris18-max
